@@ -2,7 +2,7 @@ package Arraylists;
 
 import java.util.ArrayList;
 
-public class FindingDupes {
+public class HomeworkFriday {
     public static void main(String[] args) {
         ArrayList<Integer> testing = new ArrayList<>();
         testing.add(1);
@@ -12,6 +12,7 @@ public class FindingDupes {
         testing.add(5);
         testing.add(5);
         System.out.println(findDuplicates(testing));
+        findPairs(testing);
     }
     public static boolean findDuplicates(ArrayList<Integer> arr) {
         for (int i = 0; i < arr.size(); i++) {
@@ -22,5 +23,16 @@ public class FindingDupes {
             }
         }
         return false;
+    }
+    public static void findPairs(ArrayList<Integer> arr) {
+        int checker = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            if ((checker + 1) <= arr.size() - 1) {
+                System.out.println(arr.get(i) +", "+arr.get(i + 1));
+            } else {
+                return;
+            }
+
+        }
     }
 }
