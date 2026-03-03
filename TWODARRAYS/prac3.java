@@ -1,16 +1,25 @@
-package TWODARRAYS;
+//package TWODARRAYS;
+
+import java.util.Arrays;
 
 public class prac3 {
     public static void main(String[] args) {
         String[][] matrix = {{"Jack", "Jill", "Jane", "Joey"}, {"Maura", "Molly", "Mason", "Maureen"}, {"Emma", "Eileen", "Elizabeth", "Emma"}};
-        shortenMe(matrix);
-        System.out.println(shiftMe(matrix));
+        String[][] matrixCopy = {{"Jack", "Jill", "Jane", "Joey"}, {"Maura", "Molly", "Mason", "Maureen"}, {"Emma", "Eileen", "Elizabeth", "Emma"}};
+        String[][] shortened = shortenMe(matrix);
+        System.out.println(Arrays.deepToString(shortened));
+
+        int rowWithMostDupes = countDuplicates(matrix);
+        System.out.println("Row with most duplicates: " + rowWithMostDupes);
+
+        String[][] shifted = shiftMe(matrixCopy);
+        System.out.println(Arrays.deepToString(shifted));
     }
     public static String[][] shortenMe(String[][] mat) {
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 if (mat[i][j] != null && mat[i][j].length() > 4) {
-                    mat[i][j] = mat[i][j].substring(0, 4);
+                    mat[i][j] = mat[i][j].substring(0, 3);
                 }
             }
         }
@@ -22,8 +31,8 @@ public class prac3 {
         int idx = 0;
         for (int i = 0; i< mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
-                for (int k = 1; k < mat[i].length; k++) {
-                    if (mat[i][j] == mat[i][k]) {
+                for (int k = 0; k < mat[i].length; k++) {
+                    if (mat[i][j].equals(mat[i][k])) {
                         dupes++;
                     }
                 }
